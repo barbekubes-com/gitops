@@ -41,7 +41,7 @@ spec:
               }
               seal "awskms" {
                 region     = "us-east-2"
-                kms_key_id = "<AWS_KMS_KEY_ID>"
+                kms_key_id = "8380d6a5-b033-4bb2-b2cb-ba410ec05074"
               }
               service_registration "kubernetes" {}
           ingress:
