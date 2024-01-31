@@ -1,0 +1,76 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubefirst
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  project: default
+  source:
+    repoURL: https://charts.kubefirst.com
+    targetRevision: 2.3.8-rc47
+    chart: kubefirst
+    helm:
+      values: |-
+        global:
+          cloudProvider: "aws"
+          clusterId: "juyu2c"
+          clusterType: "mgmt"
+          domainName: "kubefist.com"
+          gitProvider: "github"
+          installMethod: "helm"
+          kubefirstClient: "<KUBEFIRST_CLIENT>"
+          kubefirstTeam: "true"
+          kubefirstTeamInfo: "jared"
+          kubefirstVersion: "development"
+          useTelemetry: ""
+        kubefirst-api-ee:
+          extraEnv:
+            IN_CLUSTER: "true"
+        kubefirst-api:
+          isClusterZero: "false"
+          extraEnv:
+            IN_CLUSTER: "true"
+            CLUSTER_NAME: "bbkubes-1"
+            ENTERPRISE_API_URL: "http://kubefirst-kubefirst-api-ee.kubefirst.svc.cluster.local"
+          serviceAccount:
+            create: true
+            annotations:
+              eks.amazonaws.com/role-arn: arn:aws:iam::126827061464:role/kubefirst-api-bbkubes-1
+        console:
+          isClusterZero: "false"
+          domain: "kubefist.com"
+          extraEnvSecrets:
+            CLIENT_ID:
+              name: kubefirst-console-secrets
+              key: client_id
+            SECRET_ID:
+              name: kubefirst-console-secrets
+              key: client_secret
+          ingress:
+            enabled: "true"
+            className: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+              
+              
+              
+            hosts:
+              - host: kubefirst.kubefist.com
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+              - secretName: kubefirst-tls
+                hosts:
+                  - kubefirst.kubefist.com
+  destination:
+    name: in-cluster
+    namespace: kubefirst
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
