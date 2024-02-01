@@ -1,0 +1,9 @@
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: example-workload-cluster
+spec:
+  assumeRoleChain:
+    - roleARN: "arn:aws:iam::126827061464:role/crossplane-bbkubes-1"
+  credentials:
+    source: IRSA
