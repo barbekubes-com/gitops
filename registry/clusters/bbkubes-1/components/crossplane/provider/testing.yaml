@@ -12,17 +12,17 @@ spec:
     name: example-dev-cluster-conn
     namespace: crossplane-system
 ---
-# apiVersion: kubernetes.crossplane.io/v1alpha1
-# kind: ProviderConfig
-# metadata:
-#   name: example-workload-cluster
-# spec:
-#   credentials:
-#     source: Secret
-#     secretRef:
-#       namespace: crossplane-system
-#       name: example-dev-cluster-conn
-#       key: kubeconfig
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: example-workload-cluster
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: example-dev-cluster-conn
+      key: kubeconfig
 # ---
 # apiVersion: kubernetes.crossplane.io/v1alpha2
 # kind: Object
