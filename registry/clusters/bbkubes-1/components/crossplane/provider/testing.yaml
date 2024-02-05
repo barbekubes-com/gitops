@@ -7,7 +7,7 @@ spec:
     clusterName: dooobar
     region: us-east-2
   providerConfigRef:
-    name: provider-aws-eks
+    name: example-workload-cluster
   writeConnectionSecretToRef:
     name: example-dev-cluster-conn
     namespace: crossplane-system
