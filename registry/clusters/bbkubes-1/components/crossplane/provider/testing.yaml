@@ -1,16 +1,16 @@
-apiVersion: eks.aws.upbound.io/v1beta1
-kind: ClusterAuth
-metadata:
-  name: example-dev
-spec:
-  forProvider:
-    clusterName: dooobar
-    region: us-east-2
-  providerConfigRef:
-    name: provider-aws-eks
-  writeConnectionSecretToRef:
-    name: example-dev-cluster-conn
-    namespace: crossplane-system
+# apiVersion: eks.aws.upbound.io/v1beta1
+# kind: ClusterAuth
+# metadata:
+#   name: example-dev
+# spec:
+#   forProvider:
+#     clusterName: dooobar
+#     region: us-east-2
+#   providerConfigRef:
+#     name: provider-aws-eks
+#   writeConnectionSecretToRef:
+#     name: example-dev-cluster-conn
+#     namespace: crossplane-system
 # ---
 # apiVersion: kubernetes.crossplane.io/v1alpha1
 # kind: ProviderConfig
