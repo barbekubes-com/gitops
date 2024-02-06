@@ -3,6 +3,8 @@ kind: ProviderConfig
 metadata:
   name: example-workload-cluster
 spec:
+  controllerConfigRef:
+    name: terraform-config
   assumeRoleChain:
     - roleARN: "arn:aws:iam::126827061464:role/crossplane-bbkubes-1"
   credentials:
