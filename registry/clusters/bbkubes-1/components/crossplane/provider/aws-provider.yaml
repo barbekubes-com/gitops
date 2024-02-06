@@ -4,6 +4,8 @@ metadata:
   name: provider-aws-iam
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-iam:v0.47.1
+  controllerConfigRef:
+    name: terraform-config
 ---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
@@ -11,3 +13,5 @@ metadata:
   name: provider-aws-eks
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-eks:v0.47.1
+  controllerConfigRef:
+    name: terraform-config
