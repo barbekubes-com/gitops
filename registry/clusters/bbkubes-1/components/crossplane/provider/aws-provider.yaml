@@ -6,7 +6,6 @@ spec:
   package: xpkg.upbound.io/upbound/provider-aws-iam:v0.47.1
   controllerConfigRef:
     name: terraform-config
-  serviceAccountName: crossplane-provider-terraform-bbkubes-1
 ---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
@@ -16,4 +15,3 @@ spec:
   package: xpkg.upbound.io/upbound/provider-aws-eks:v0.47.1
   controllerConfigRef:
     name: terraform-config
-  serviceAccountName: crossplane-provider-terraform-bbkubes-1
